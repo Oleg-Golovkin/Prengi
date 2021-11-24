@@ -4,5 +4,25 @@
     min-height: 700px
     background: url('../img/bg/management.png')
     &__nav
+        position: absolute
+        right: 0
+        min-width: 540px
         list-style: none
         display: flex
+        justify-content: space-between
+        font-size: 13px
+        line-height: 26px
+        font-weight: 700
+        text-transform: uppercase
+        a
+            text-decoration: none
+            color: #ffffff
+        >li:hover .management__sub-nav
+            display: block
+
+    &__sub-nav
+        position: absolute
+        left: 0
+        list-style: none
+        display: none
+        
