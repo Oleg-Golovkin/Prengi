@@ -1,10 +1,16 @@
 .management
-    margin-top: 16px
+    position: relative
+    padding-top: 39px
     display: block
     min-height: 700px
     background: url('../img/bg/management.png')
+    &__nav-wapper
+        // position: absolute
+        display: flex
+        justify-content: space-between
+        align-items: center
+
     &__nav
-        position: absolute
         right: 0
         min-width: 540px
         list-style: none
@@ -14,9 +20,10 @@
         line-height: 26px
         font-weight: 700
         text-transform: uppercase
+        margin: 0
         a
             text-decoration: none
-            color: #ffffff
+            color: var(--text-color)
         >li:hover .management__sub-nav
             display: block
 
@@ -25,4 +32,60 @@
         left: 0
         list-style: none
         display: none
+        >li:hover .management__sub-sub-nav
+            display: block
+    &__sub-sub-nav
+        display: none
+        list-style: none
+    &__business
+        position: relative
+        max-width: 537px
+        margin-top: 237px
         
+    &__h2
+        font-size: 42px
+        line-height: 48px
+        font-weight: 900
+        color: var(--text-color)
+    &__h3
+        font-size: 24px
+        line-height: 30px
+        font-weight: 400
+        color: var(--text-color)
+        span
+            font-weight: 300
+            color: var(--text-color)
+    &__btn
+        display: inline-block
+        padding: 24px 46px 21px 45px
+        position: relative
+        margin-top: 39px
+        background-color: #00c2f0
+        text-shadow: 0 -1px 1px #777
+        box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #00c2f0
+        font-size: 16px
+        line-height: 30px
+        font-weight: 700
+        text-transform: uppercase
+        border-radius: 5px
+        text-decoration: none
+        color: var(--text-color)
+        &:hover
+            color: var(--text-color)
+        &:active
+            top: .1em
+            left: .1em
+            box-shadow: 0 0 0 60px rgba(0,0,0,.05) inse
+
+    &__mobile
+        position: absolute
+        max-height: 569px
+        max-width: 434px
+        // top: 0
+        right: 0
+        bottom: -73px
+        
+
+        img
+            width: 100%
+            height: 100%
