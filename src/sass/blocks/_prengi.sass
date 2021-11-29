@@ -1,8 +1,10 @@
 .prengi
+    padding: 80px 0
     &__solution-wapper
         display: flex
         justify-content: space-between
         align-items: center
+
     &__solution
         position: relative
         display: block
@@ -17,12 +19,28 @@
         left: 52%
         transform: translateX(-50%)
         text-align: center
-    &__span-wapper
-        width: 169px
+    &__span-wapper               
+        position: relative
+        margin: 0 auto
+        width: 162px
         height: 72px
+        z-index: 1
+    &_m-t50
+        margin-top: 60px
+    &_m-b100
+        margin-bottom: 100px
     &__span1
-        display: inline-block
-        height: 6px
-        width: 150px
-        background: #ececec
-        transform: rotate(45deg)
+        @include prengi__span
+    &__span2
+        @include prengi__span
+        right: 0
+        transform: rotate( -28deg) translate(11px,-39px)
+    &__span3
+        @include prengi__span
+        bottom: -20px
+        transform: rotate(28deg) translate(-11px, -39px)
+    &__span4
+        @include prengi__span
+        bottom: -20px
+        right: 0
+        transform: rotate( -28deg) translate(11px,-39px)
