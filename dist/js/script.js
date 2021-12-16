@@ -9,7 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // код для обычных устройств
     }
 
-  
+    //--------------------Слайдер----------------------//
+
+    const expertNextSlider = document.querySelector(".expert__next-wapper img"),
+    expertPreviosSlider = document.querySelector(".expert__previos-wapper img");
+
+    console.log(expertPreviosSlider);
+
+
 
 
 
