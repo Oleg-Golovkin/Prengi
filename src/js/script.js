@@ -12,9 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
     //--------------------Слайдер----------------------//
 
     const expertNextSlider = document.querySelector(".expert__next-wapper img"),
-    expertPreviosSlider = document.querySelector(".expert__previos-wapper img");
+    expertPreviosSlider = document.querySelector(".expert__previos-wapper img"),
+    expertSliders = document.querySelector(".expert__sub-wapper-sliders"),
+    widthExpertSliders = window.getComputedStyle(expertSliders).width;
+    
+    let offset = 0;
 
-    console.log(expertPreviosSlider);
+    console.log(widthExpertSliders.replace(/\D/, ""));
+
+
+    expertNextSlider.addEventListener("click", (e)=> {
+        // if(offset = +widthExpertSliders)
+    })
 
 
 
