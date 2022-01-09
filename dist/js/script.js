@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let offset = 0;
 
-    console.log((+width.replace(/\D/g, "") * (expertSlide.length - 1)));
+    console.log(+width.replace(/\D/g, ""));
 
     expertNextSlider.addEventListener("click", () => {
         if (offset == (+width.replace(/\D/g, "") * (expertSlide.length - 1))) {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             offset -= +width.replace(/\D/g, "");
         }
         expertSliders.style.transform = `translateX(-${offset}px)`;
-    })
+    });
 
 
 

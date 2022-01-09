@@ -3,6 +3,7 @@
     &__wapper
         display: flex
         position: relative
+        justify-content: center
 
     &__title
         margin-top: 79px
@@ -15,19 +16,20 @@
         color: #ffffff
         max-width: 373px
         text-align: center
-
+        z-index: 1
     &__sub-wapper
         position: relative
-        width: 960px
+        width: 50% 
         min-height: 580px
-        background-image: url("../img/options/layers1.png")
+        background: url("../img/options/layers1.png") center center/cover no-repeat
         &_background-other
-            padding-left: 82px
-            background-image: url("../img/options/layers2.png")
+            padding-left: 82px           
+            background: url("../img/options/layers2.png") center center/cover no-repeat
     &__dsc
         max-width: 485px
         min-height: 43px
         margin-top: 270px
+        position: relative
         &_right-0
             position: absolute
             right: 82px
@@ -37,6 +39,8 @@
         font-weight: 900
         text-transform: uppercase
         color: #ffffff
+        position: relative
+        z-index: 1
         &_right-0
             text-align: right
 
@@ -46,5 +50,19 @@
         line-height: 26px
         font-weight: 300
         color: #ffffff
+        z-index: 1
+        position: relative
         &_right-0
             text-align: right
+    &__square
+        position: absolute
+        top: -38px
+        left: -39px
+        width: 167px
+        height: 167px
+        opacity: 0.3
+        background-color: #00c2f0
+        z-index: 0
+        &_right-0
+            right: -39px
+            left: auto
