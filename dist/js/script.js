@@ -18,11 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let offset = 0;
 
-    console.log(widthExpertSliders);
-    // console.log(+Math.round(widthExpertSliders.replace(/\D/g, "")));
-
-
-    // )
+    console.log(widthExpertSliders.replace(/\D/, ""));
 
 
     expertNextSlider.addEventListener("click", (e)=> {
