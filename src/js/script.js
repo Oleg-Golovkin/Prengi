@@ -1,10 +1,12 @@
 "use strict";
 
 import {viewDevice} from "./modules/view_device";
-import {slider} from "./modules/slider";
+// import {slider} from "./modules/slider";
+import {simpleAdaptiveSliderMin} from "./modules/simple-adaptive-slider.min";
 
 document.addEventListener("DOMContentLoaded", () => {
-    /* После полной загрузки HTML выполняется JS */
     viewDevice();
-    slider();
+    // slider();
+    simpleAdaptiveSliderMin();
+
 });
