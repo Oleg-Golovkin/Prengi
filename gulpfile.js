@@ -8,8 +8,11 @@ const cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass')(require('sass'));
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
+// сам webpack
 const webpack = require('webpack-stream');
+// переменная для его настроек
 const path = require('path');
+// плагин webpack, минимизирующий js
 const CompressionPlugin = require("compression-webpack-plugin");
 
 
