@@ -2,13 +2,14 @@
 // установленные пакеты npm
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
-//Удаляем метод .creat()
 const rename = require("gulp-rename");
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass')(require('sass'));
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
+const webpack = require('webpack-stream');
+const path = require('path');
 
 
 
@@ -67,12 +68,13 @@ gulp.task('watch', function () {
     // Слежка за файлами scss sass css
     gulp.watch('src/sass/**/*.+(scss|sass|css)', gulp.parallel('styles'));
     //следи за файлами sass или scss или css если изм, то запускай компилятор
-    // 5. Слежка за файлом html 
+    // 4. Слежка за файлом html 
     gulp.watch('src/*.html').on('change', gulp.parallel('html'));
     // следи за файлом html      если поменялось, то выполняй задачу html 
-    //   которая будет описана в пункте 6
-    gulp.watch('src/js/**/*.js').on('change', gulp.parallel('scripts'));
+    //   которая будет описана в пункте 5
     gulp.watch('src/img/**/*').on('all', gulp.parallel('image'));
+    // За файлом скрипта следить не нужно, это делает webpack
+    // gulp.watch('src/js/script.js').on('all', gulp.parallel('default'));
     gulp.watch('src/icons/**/*').on('all', gulp.parallel('icons'));
     gulp.watch('src/fonts/**/*').on('all', gulp.parallel('icons'));
     // следи за папками js img icons, если поменялись, то выполняй
@@ -84,7 +86,8 @@ gulp.task('watch', function () {
 //  всех файлов с форматом js, шрифтов, картинок,
 //  css копировать не надо, поскольку эта операция делается в 
 // пункте 2, а именно в gulp.task('styles', function () {  
-// 6. Сжатие и перенос файла html из папки src в папку dist
+
+// 5. Сжатие и перенос файла html из папки src в папку dist
 gulp.task('html', function () {
     return gulp.src('src/*.html')
         // получаем любой * файл с расширением html, 
@@ -96,22 +99,10 @@ gulp.task('html', function () {
         .pipe(gulp.dest('dist/'));
     // КОПИРУЕМ сжатый файл  html в папку dist
     // поставить знак /  , чтобы помещалось в папку
-        
+
 });
 
 
-// Копирование фалов js
-gulp.task('scripts', function () {
-    return gulp.src('src/js/**/*.js')
-        // получаем любой * файл js, 
-        // ИЗ ЛЮБОЙ ПАПКИ /**/ 
-        .pipe(gulp.dest('dist/js'))
-        // КОПИРУЕМ сжатый файл  html в папку dist
-        // поставить знак /  , чтобы помещалось в папку
-        .pipe(browserSync.stream());
-    // обновление страницы, чтобы после изменения
-    // файла скрипта не нужно было самому обновлять
-});
 
 // Копирование шрифтов по аналогии
 gulp.task('fonts', function () {
@@ -143,6 +134,68 @@ gulp.task('image', function () {
     // файла скрипта не нужно было самому обновлять
 });
 
-// 4. Задача по запуску всех задач одновременно (паралельно).
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'html', 'fonts', 'icons', 'image'));
+// Зупуск сборщика модулей. 
+// 1. Он сам себя отслеживает  см. настройки webpack.config.js.
+// Там есть watch.
+// 2. Он сам сжимает файлы проставляет автопрефиксы.
+// gulp.task('webpack', function () {
+//     return gulp.src('./src/js/script.js')
+//         .pipe(webpack(require('./webpack.config.js')))
+//         .pipe(gulp.dest('dist/'))
+//         .pipe(browserSync.stream());
+// });
+
+// 2 Вариант запуска сборщика модулей webpack. Настройки 
+// из файла webpack.config.js. Отличие от первого в том, 
+// что настройки из этого файла отдельно не используем,
+// а загоняем их сюда.
+gulp.task('webpack', function () {
+    return gulp
+    .src('./src/js/script.js')
+        .pipe(
+            webpack({
+            mode: 'production',
+            entry: '/src/js/script.js',
+            output: {
+                path: path.resolve(__dirname, 'dist'),
+                filename: 'js/bundle.js',
+            },
+            watch: true,
+            devtool: "source-map",
+            module: {
+                rules: [{
+                    // находим все файлы js
+                    test: /\.m?js$/,
+                    // исключаем из этих найденных файлов 
+                    // node_modules и bower_components
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        // используй babel-loader. Это npm пакет,
+                        // который позволяет работать с babely через
+                        // wabpack
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                // настройка preset-env
+                                ['@babel/preset-env', {
+                                    // видить появляющиеся ошибки
+                                    debug: true,
+                                    // настрока corejs
+                                    corejs: 3,
+                                    //                 подключаются только те
+                                    // полифилы, которые нужны
+                                    useBuiltIns: "usage"
+                                }]
+                            ]
+                        }
+                    }
+                }]
+            }
+        }))
+        .pipe(gulp.dest('dist/'))
+        .pipe(browserSync.stream());
+});
+
+// 6. Задача по запуску всех задач одновременно (паралельно).
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'fonts', 'icons', 'image', 'webpack'));
 // Первый параметр - по умолчанию
