@@ -6,15 +6,8 @@ import {
 import {
     slider
 } from "./modules/slider";
-import {
-    simpleAdaptiveSliderMin
-} from "./modules/simple-adaptive-slider.min";
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     viewDevice();
     slider();
-    simpleAdaptiveSliderMin();
 });
