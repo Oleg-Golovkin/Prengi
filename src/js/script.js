@@ -7,6 +7,8 @@ import {
     slider
 } from "./modules/slider";
 
+import "./modules/hamburger"
+
 document.addEventListener("DOMContentLoaded", () => {
     viewDevice();
     slider();

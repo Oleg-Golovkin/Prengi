@@ -12,8 +12,6 @@ const imagemin = require('gulp-imagemin');
 const webpack = require('webpack-stream');
 // переменная для его настроек
 const path = require('path');
-// плагин webpack, минимизирующий js
-const CompressionPlugin = require("compression-webpack-plugin");
 
 
 
@@ -157,12 +155,7 @@ gulp.task('webpack', function () {
     return gulp
         .src('./src/js/script.js')
         .pipe(
-            webpack({
-                plugins: [
-                    new CompressionPlugin({
-                        include: /\/includes/,
-                    }),
-                ],
+            webpack({                
                 mode: 'production',
                 entry: '/src/js/script.js',
                 output: {

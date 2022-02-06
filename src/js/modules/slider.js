@@ -3,14 +3,14 @@ export function slider() {
 
     const expertNextSlider = document.querySelector(".expert__next-wapper img"),
         expertPreviosSlider = document.querySelector(".expert__previos-wapper img"),
-        expertSubWapperSliders = document.querySelector(".expert__sub-wapper-sliders"),
+        expertSubWapperSliders = document.querySelector(".expert__wapper-sliders"),
         expertSliders = document.querySelector(".expert__sliders"),
         expertSlide = document.querySelectorAll(".expert__slide"),
-        width = window.getComputedStyle(expertSubWapperSliders).width;
+        width = "947";
 
     let offset = 0;
 
-    console.log((+width.replace(/\D/g, "") * (expertSlide.length - 1)));
+    console.log(width);
 
     expertNextSlider.addEventListener("click", () => {
         if (offset == (+width.replace(/\D/g, "") * (expertSlide.length - 1))) {
