@@ -13,6 +13,13 @@ const webpack = require('webpack-stream');
 // переменная для его настроек
 const path = require('path');
 
+// Не обязательный блок.
+// Можно создать переменную пути и подставить ее там, где нужно
+// в таком формате pipe(gulp.dest(dist + "assets"))
+// Чтобы перемещать конечный продукт в иные папки
+// const dist = './dist/';
+// const dist = 'C:/MAMP/htdocs/';
+// const dist = '/Applications/MAMP/htdocs/';
 
 
 
