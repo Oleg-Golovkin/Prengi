@@ -7,6 +7,7 @@ import {
 
 import hamburger from  "./modules/hamburger";
 
+
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
     hamburger();
