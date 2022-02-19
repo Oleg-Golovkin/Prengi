@@ -14,7 +14,7 @@ const hamburger = () => {
             menu.style.left = "0px";
             menuBackground.style.opacity = "1";
             menuBackground.style.visibility = "visible";
-
+ 
         }
 
         // ----------------------------deactivation menu --------------------------//
