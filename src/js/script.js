@@ -6,6 +6,7 @@ import {
 } from "./modules/slider";
 
 import hamburger from  "./modules/hamburger";
+import "./modules/scroll_dynamic";
 
 
 document.addEventListener("DOMContentLoaded", () => {
