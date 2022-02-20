@@ -7,6 +7,7 @@ import {
 
 import hamburger from  "./modules/hamburger";
 import "./modules/scroll_dynamic";
+import "./modules/calc";
 
 
 document.addEventListener("DOMContentLoaded", () => {
