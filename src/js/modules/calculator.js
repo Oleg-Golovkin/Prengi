@@ -73,7 +73,7 @@ const calculator = () => {
         });
     };
 
-    getDinamick();
+    getDinamick(); 
 
 };
 
