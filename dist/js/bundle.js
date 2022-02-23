@@ -18,6 +18,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4__);
+
+
 
 
 
@@ -27,6 +33,12 @@ var calculator = function calculator() {
       chooseMedium = document.querySelector(".calculating__choose_medium"),
       chooseItems = document.querySelectorAll(".calculating__choose-item"),
       result = document.querySelector(".calculating__result");
+  var numInputs = chooseMedium.querySelectorAll("input");
+  numInputs.forEach(function (numInput) {
+    numInput.addEventListener("input", function () {
+      numInput.value = numInput.value.replace(/\D/, "");
+    });
+  });
   var num,
       sex = "woman",
       height,
@@ -36,8 +48,15 @@ var calculator = function calculator() {
 
   var formula = function formula() {
     if (!sex || !weight || !height || !age) {
-      result.textContent = "______________";
+      result.textContent = "Выберете пол, вес, рост и возраст";
+      numInputs.forEach(function (input) {
+        input.style.border = "red solid 1px";
+      });
       return;
+    } else {
+      numInputs.forEach(function (input) {
+        input.style.border = "none";
+      });
     }
 
     if (sex == "man") {
@@ -67,19 +86,23 @@ var calculator = function calculator() {
         if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
           sex = e.target.getAttribute("id");
           chooseItems.forEach(function (chooseItem) {
-            chooseItem.classList.remove("calculating__choose-item_active");
+            if (chooseItem.closest("#gender")) {
+              chooseItem.classList.remove("calculating__choose-item_active");
+              e.target.classList.add("calculating__choose-item_active");
+            }
           });
-          document.querySelector(attribute).classList.add("calculating__choose-item_active");
-          e.target.classList.add("calculating__choose-item_active");
           formula();
         }
 
         if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
+          console.log("asfda");
           ratio = e.target.getAttribute("data-ratio");
           chooseItems.forEach(function (chooseItem) {
-            chooseItem.classList.remove("calculating__choose-item_active");
+            if (chooseItem.closest(".calculating__choose_big")) {
+              chooseItem.classList.remove("calculating__choose-item_active");
+              e.target.classList.add("calculating__choose-item_active");
+            }
           });
-          e.target.classList.add("calculating__choose-item_active");
           formula();
         }
       });
