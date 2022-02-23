@@ -38,19 +38,21 @@ var calculator = function calculator() {
       result.textContent = "Выберете пол, вес, рост и возраст";
     } else if (sex == "man") {
       num = 10 * +weight + (6, 25 * +height) - 5 * +age - 160;
+      result.textContent = "".concat(num);
 
       if (ratio) {
         num = num - +ratio;
+        result.textContent = "".concat(num);
       }
     } else if (sex == "woman") {
       num = 10 * +weight + (6, 25 * +height) - 5 * +age + 5;
+      result.textContent = "".concat(num);
 
       if (ratio) {
         num = num - +ratio;
+        result.textContent = "".concat(num);
       }
     }
-
-    result.textContent = "".concat(num);
   };
 
   formula();
