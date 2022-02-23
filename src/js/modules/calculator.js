@@ -49,6 +49,7 @@ const calculator = () => {
                     document.querySelector(attribute).classList.add("calculating__choose-item_active");
                     e.target.classList.add("calculating__choose-item_active");
                     formula();
+                    
                 }
                 if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
                     ratio = e.target.getAttribute("data-ratio");
