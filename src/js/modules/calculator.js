@@ -2,38 +2,37 @@ const calculator = () => {
     const
         chooses = document.querySelectorAll(".calculating__choose"),
         chooseMedium = document.querySelector(".calculating__choose_medium"),
+        chooseItems = document.querySelectorAll(".calculating__choose-item"),
         result = document.querySelector(".calculating__result");
 
     let num,
-        sex,
+        sex = "woman",
         height,
         weight,
         age,
-        ratio;
+        ratio = "1.375";
 
     const formula = () => {
-        console.log(sex);
-        console.log(weight);
-        console.log(height);
-        console.log(age);
         if (!sex || !weight || !height || !age) {
-            result.textContent = "Выберете пол, вес, рост и возраст";
-        } else if (sex == "man") {
+            result.textContent = "______________";
+            return;
+        }
+        if (sex == "man") {
             num = (10 * (+weight) + (6, 25 * (+height)) - (5 * (+age)) - 160)
             result.textContent = `${num}`;
-            if(ratio) {
+            if (ratio) {
                 num = num - (+ratio);
                 result.textContent = `${num}`;
             }
-        } else if (sex == "woman") {
+        } else {
             num = (10 * (+weight) + (6, 25 * (+height)) - (5 * (+age)) + 5)
             result.textContent = `${num}`;
-            if(ratio) {
+            if (ratio) {
                 num = num - (+ratio);
                 result.textContent = `${num}`;
             }
         }
-        
+
     };
     formula();
 
@@ -41,15 +40,24 @@ const calculator = () => {
 
     const getStatick = (attribute) => {
         chooses.forEach(choose => {
-            choose.addEventListener("click", (e) => {
-                if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
-                    sex = e.target.getAttribute("id");
-                    formula();
-                }
-                if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
-                    ratio = e.target.getAttribute("data-ratio");
-                    formula();
-                }
+            chooseItems.forEach(chooseItem => {
+                choose.addEventListener("click", (e) => {
+                    chooseItem.classList.remove("calculating__choose-item_active");
+                    if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
+                        sex = e.target.getAttribute("id");
+                        console.log(sex);
+                        document.querySelector(attribute).classList.add("calculating__choose-item_active");
+                        e.target.classList.add("calculating__choose-item_active");
+                        formula();
+                    }
+                    if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
+                        ratio = e.target.getAttribute("data-ratio");
+                        console.log(ratio);
+                        e.target.classList.add("calculating__choose-item_active");
+                        formula();
+                    }
+
+                });
             });
         });
     };
@@ -77,7 +85,7 @@ const calculator = () => {
         });
     };
 
-    getDinamick(); 
+    getDinamick();
 
 };
 

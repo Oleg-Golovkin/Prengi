@@ -25,18 +25,22 @@ __webpack_require__.r(__webpack_exports__);
 var calculator = function calculator() {
   var chooses = document.querySelectorAll(".calculating__choose"),
       chooseMedium = document.querySelector(".calculating__choose_medium"),
+      chooseItems = document.querySelectorAll(".calculating__choose-item"),
       result = document.querySelector(".calculating__result");
-  var num, sex, height, weight, age, ratio;
+  var num,
+      sex = "woman",
+      height,
+      weight,
+      age,
+      ratio = "1.375";
 
   var formula = function formula() {
-    console.log(sex);
-    console.log(weight);
-    console.log(height);
-    console.log(age);
-
     if (!sex || !weight || !height || !age) {
-      result.textContent = "Выберете пол, вес, рост и возраст";
-    } else if (sex == "man") {
+      result.textContent = "______________";
+      return;
+    }
+
+    if (sex == "man") {
       num = 10 * +weight + (6, 25 * +height) - 5 * +age - 160;
       result.textContent = "".concat(num);
 
@@ -44,7 +48,7 @@ var calculator = function calculator() {
         num = num - +ratio;
         result.textContent = "".concat(num);
       }
-    } else if (sex == "woman") {
+    } else {
       num = 10 * +weight + (6, 25 * +height) - 5 * +age + 5;
       result.textContent = "".concat(num);
 
@@ -59,16 +63,25 @@ var calculator = function calculator() {
 
   var getStatick = function getStatick(attribute) {
     chooses.forEach(function (choose) {
-      choose.addEventListener("click", function (e) {
-        if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
-          sex = e.target.getAttribute("id");
-          formula();
-        }
+      chooseItems.forEach(function (chooseItem) {
+        choose.addEventListener("click", function (e) {
+          chooseItem.classList.remove("calculating__choose-item_active");
 
-        if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
-          ratio = e.target.getAttribute("data-ratio");
-          formula();
-        }
+          if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
+            sex = e.target.getAttribute("id");
+            console.log(sex);
+            document.querySelector(attribute).classList.add("calculating__choose-item_active");
+            e.target.classList.add("calculating__choose-item_active");
+            formula();
+          }
+
+          if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
+            ratio = e.target.getAttribute("data-ratio");
+            console.log(ratio);
+            e.target.classList.add("calculating__choose-item_active");
+            formula();
+          }
+        });
       });
     });
   };
