@@ -7,7 +7,7 @@ import {
 
 import hamburger from  "./modules/hamburger";
 import "./modules/scroll_dynamic";
-import "./modules/calc";
+import calculator from "./modules/calculator";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,4 +15,5 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger();
     viewDevice();
     slider();
+    calculator();
 });

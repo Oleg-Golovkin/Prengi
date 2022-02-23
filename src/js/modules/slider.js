@@ -10,7 +10,6 @@ export function slider() {
 
     let offset = 0;
 
-    console.log(width);
 
     expertNextSlider.addEventListener("click", () => {
         if (offset == (+width.replace(/\D/g, "") * (expertSlide.length - 1))) {

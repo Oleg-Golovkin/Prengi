@@ -1,14 +1,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/modules/calc.js":
-/*!********************************!*\
-  !*** ./src/js/modules/calc.js ***!
-  \********************************/
+/***/ "./src/js/modules/calculator.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/calculator.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
@@ -18,28 +21,87 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var select = document.querySelectorAll("select"),
-    totalPrice = document.querySelector(".total__price");
-var num, resSizes, resOptions;
-select.forEach(function (item) {
-  item.addEventListener("input", function (e) {
-    if (e.target && e.target.matches("#calc")) {
-      resSizes = e.target.value;
+
+var calculator = function calculator() {
+  var chooses = document.querySelectorAll(".calculating__choose"),
+      chooseMedium = document.querySelector(".calculating__choose_medium"),
+      result = document.querySelector(".calculating__result");
+  var num, sex, height, weight, age, ratio;
+
+  var formula = function formula() {
+    console.log(sex);
+    console.log(weight);
+    console.log(height);
+    console.log(age);
+
+    if (!sex || !weight || !height || !age) {
+      result.textContent = "Выберете пол, вес, рост и возраст";
+    } else if (sex == "man") {
+      num = 10 * +weight + (6, 25 * +height) - 5 * +age - 160;
+
+      if (ratio) {
+        num = num - +ratio;
+      }
+    } else if (sex == "woman") {
+      num = 10 * +weight + (6, 25 * +height) - 5 * +age + 5;
+
+      if (ratio) {
+        num = num - +ratio;
+      }
     }
 
-    if (e.target && e.target.matches("#options")) {
-      resOptions = e.target.value;
-    }
+    result.textContent = "".concat(num);
+  };
 
-    num = +resSizes * +resOptions;
+  formula();
 
-    if (!resSizes || !resOptions) {
-      totalPrice.innerHTML = "";
-    } else {
-      totalPrice.innerHTML = "".concat(num, " \u0440\u0443\u0431\u043B\u0435\u0439");
-    }
-  });
-});
+  var getStatick = function getStatick(attribute) {
+    chooses.forEach(function (choose) {
+      choose.addEventListener("click", function (e) {
+        if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
+          sex = e.target.getAttribute("id");
+          formula();
+        }
+
+        if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
+          ratio = e.target.getAttribute("data-ratio");
+          formula();
+        }
+      });
+    });
+  };
+
+  getStatick("#woman");
+  getStatick("#man");
+  getStatick("#low");
+  getStatick("#small");
+  getStatick("#medium");
+  getStatick("#high");
+
+  var getDinamick = function getDinamick() {
+    chooseMedium.addEventListener("input", function (e) {
+      switch (e.target.getAttribute("id")) {
+        case "height":
+          height = e.target.value;
+          break;
+
+        case "weight":
+          weight = e.target.value;
+          break;
+
+        case "age":
+          age = e.target.value;
+          break;
+      }
+
+      formula();
+    });
+  };
+
+  getDinamick();
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculator);
 
 /***/ }),
 
@@ -138,7 +200,6 @@ function slider() {
       expertSlide = document.querySelectorAll(".expert__slide"),
       width = "947";
   var offset = 0;
-  console.log(width);
   expertNextSlider.addEventListener("click", function () {
     if (offset == +width.replace(/\D/g, "") * (expertSlide.length - 1)) {
       offset = 0;
@@ -3094,7 +3155,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_hamburger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/hamburger */ "./src/js/modules/hamburger.js");
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/scroll_dynamic */ "./src/js/modules/scroll_dynamic.js");
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
+/* harmony import */ var _modules_calculator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calculator */ "./src/js/modules/calculator.js");
 
 
 
@@ -3106,6 +3167,7 @@ document.addEventListener("DOMContentLoaded", function () {
   (0,_modules_hamburger__WEBPACK_IMPORTED_MODULE_2__["default"])();
   (0,_modules_view_device__WEBPACK_IMPORTED_MODULE_0__.viewDevice)();
   (0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.slider)();
+  (0,_modules_calculator__WEBPACK_IMPORTED_MODULE_4__["default"])();
 });
 })();
 
