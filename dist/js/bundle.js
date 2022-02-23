@@ -63,25 +63,25 @@ var calculator = function calculator() {
 
   var getStatick = function getStatick(attribute) {
     chooses.forEach(function (choose) {
-      chooseItems.forEach(function (chooseItem) {
-        choose.addEventListener("click", function (e) {
-          chooseItem.classList.remove("calculating__choose-item_active");
+      choose.addEventListener("click", function (e) {
+        if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
+          sex = e.target.getAttribute("id");
+          chooseItems.forEach(function (chooseItem) {
+            chooseItem.classList.remove("calculating__choose-item_active");
+          });
+          document.querySelector(attribute).classList.add("calculating__choose-item_active");
+          e.target.classList.add("calculating__choose-item_active");
+          formula();
+        }
 
-          if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
-            sex = e.target.getAttribute("id");
-            console.log(sex);
-            document.querySelector(attribute).classList.add("calculating__choose-item_active");
-            e.target.classList.add("calculating__choose-item_active");
-            formula();
-          }
-
-          if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
-            ratio = e.target.getAttribute("data-ratio");
-            console.log(ratio);
-            e.target.classList.add("calculating__choose-item_active");
-            formula();
-          }
-        });
+        if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
+          ratio = e.target.getAttribute("data-ratio");
+          chooseItems.forEach(function (chooseItem) {
+            chooseItem.classList.remove("calculating__choose-item_active");
+          });
+          e.target.classList.add("calculating__choose-item_active");
+          formula();
+        }
       });
     });
   };
