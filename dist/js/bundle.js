@@ -1,6 +1,62 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/modules/acordion.js":
+/*!************************************!*\
+  !*** ./src/js/modules/acordion.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var acordion = function acordion() {
+  var accordionHeadings = document.querySelectorAll(".accordion-heading"),
+      accordionBlocks = document.querySelectorAll(".accordion-block"); // 1. Весь акордион закрыт
+
+  function hideAccordionBlock() {
+    accordionBlocks.forEach(function (accordionBlock) {
+      accordionBlock.style.display = "none";
+    });
+  }
+
+  hideAccordionBlock(); // 2. Открытие по соответствующему индексу
+
+  function showAccordionBlock(i) {
+    accordionBlocks[i].style.display = "block"; // Подключить animate css
+  }
+
+  accordionHeadings.forEach(function (accordionHeading, i) {
+    accordionHeading.addEventListener("click", function (e) {
+      hideAccordionBlock();
+      showAccordionBlock(i);
+    });
+  }); // При нажатии на пустое пространство (!e.target.matches("span") все дочерние, кроме span)
+  // аккордион схлопывается
+
+  document.querySelector(".often-questions").addEventListener("click", function (e) {
+    if (!e.target.matches("span")) {
+      hideAccordionBlock();
+    }
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (acordion);
+
+/***/ }),
+
 /***/ "./src/js/modules/calculator.js":
 /*!**************************************!*\
   !*** ./src/js/modules/calculator.js ***!
@@ -3194,6 +3250,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/scroll_dynamic */ "./src/js/modules/scroll_dynamic.js");
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _modules_calculator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calculator */ "./src/js/modules/calculator.js");
+/* harmony import */ var _modules_acordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/acordion */ "./src/js/modules/acordion.js");
+
 
 
 
@@ -3206,6 +3264,7 @@ document.addEventListener("DOMContentLoaded", function () {
   (0,_modules_view_device__WEBPACK_IMPORTED_MODULE_0__.viewDevice)();
   (0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.slider)();
   (0,_modules_calculator__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  (0,_modules_acordion__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 })();
 

@@ -8,6 +8,7 @@ import {
 import hamburger from  "./modules/hamburger";
 import "./modules/scroll_dynamic";
 import calculator from "./modules/calculator";
+import acordion from "./modules/acordion";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,4 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
     viewDevice();
     slider();
     calculator();
+    acordion();
 });
