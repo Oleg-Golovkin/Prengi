@@ -30,9 +30,11 @@
         margin: 0 auto
         &__expert
             justify-content: center
+            padding: 10px 0px
             li
-                // justify-content: center
-
+                border: none
+                padding: 0
+                margin-right: 20px
 @media (max-width: 767px)
     .container
         max-width: 540px
@@ -60,9 +62,18 @@
         min-width: 100%
         padding-left: 0
         justify-content: center
-      
-
-@media (max-width: 576px)
+        &__expert
+            li
+                border: none
+                padding: 0
+                margin-right: 20px
     .container
         width: 100%
         padding: 0 25px
+    .nav
+        &__expert
+            justify-content: center
+            li
+                border: none
+                padding: 0
+                margin-right: 20px
