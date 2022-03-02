@@ -6,25 +6,24 @@ export function slider() {
         expertSubWapperSliders = document.querySelector(".expert__wapper-sliders"),
         expertSliders = document.querySelector(".expert__sliders"),
         expertSlide = document.querySelectorAll(".expert__slide"),
-        width = "947";
-
+        width = window.getComputedStyle(expertSubWapperSliders).width;
     let offset = 0;
 
 
     expertNextSlider.addEventListener("click", () => {
-        if (offset == (+width.replace(/\D/g, "") * (expertSlide.length - 1))) {
+        if (offset == Math.round((+width.replace(/\D/g, "") * (expertSlide.length - 1)))) {
             offset = 0
         } else {
-            offset += +width.replace(/\D/g, "");
+            offset += Math.round(+width.replace(/\D/g, ""));
         }
         expertSliders.style.transform = `translateX(-${offset}px)`;
     })
 
     expertPreviosSlider.addEventListener("click", () => {
         if (offset == 0) {
-            offset = (+width.replace(/\D/g, "") * (expertSlide.length - 1))
+            offset = Math.round((+width.replace(/\D/g, "") * (expertSlide.length - 1)));
         } else {
-            offset -= +width.replace(/\D/g, "");
+            offset -= Math.round(+width.replace(/\D/g, ""));
         }
         expertSliders.style.transform = `translateX(-${offset}px)`;
     });

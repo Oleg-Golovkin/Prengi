@@ -1,204 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/modules/acordion.js":
-/*!************************************!*\
-  !*** ./src/js/modules/acordion.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-
-var acordion = function acordion() {
-  var accordionHeadings = document.querySelectorAll(".accordion-heading"),
-      accordionBlocks = document.querySelectorAll(".accordion-block"); // 1. Весь акордион закрыт
-
-  function hideAccordionBlock() {
-    accordionBlocks.forEach(function (accordionBlock) {
-      accordionBlock.style.display = "none";
-    });
-  }
-
-  hideAccordionBlock(); // 2. Открытие по соответствующему индексу
-
-  function showAccordionBlock(i) {
-    accordionBlocks[i].style.display = "block"; // Подключить animate css
-  }
-
-  accordionHeadings.forEach(function (accordionHeading, i) {
-    accordionHeading.addEventListener("click", function (e) {
-      hideAccordionBlock();
-      showAccordionBlock(i);
-    });
-  }); // При нажатии на пустое пространство (!e.target.matches("span") все дочерние, кроме span)
-  // аккордион схлопывается
-
-  document.querySelector(".often-questions").addEventListener("click", function (e) {
-    if (!e.target.matches("span")) {
-      hideAccordionBlock();
-    }
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (acordion);
-
-/***/ }),
-
-/***/ "./src/js/modules/calculator.js":
-/*!**************************************!*\
-  !*** ./src/js/modules/calculator.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-
-var calculator = function calculator() {
-  var chooses = document.querySelectorAll(".calculating__choose"),
-      chooseMedium = document.querySelector(".calculating__choose_medium"),
-      chooseItems = document.querySelectorAll(".calculating__choose-item"),
-      result = document.querySelector(".calculating__result");
-  var numInputs = chooseMedium.querySelectorAll("input");
-  numInputs.forEach(function (numInput) {
-    numInput.addEventListener("input", function () {
-      numInput.value = numInput.value.replace(/\D/, "");
-    });
-  });
-  var num,
-      sex = "woman",
-      height,
-      weight,
-      age,
-      ratio = "1.375";
-
-  var formula = function formula() {
-    if (!sex || !weight || !height || !age) {
-      result.textContent = "Выберете пол, вес, рост и возраст";
-      numInputs.forEach(function (input) {
-        input.style.border = "red solid 1px";
-      });
-      return;
-    } else {
-      numInputs.forEach(function (input) {
-        input.style.border = "none";
-      });
-    }
-
-    if (sex == "man") {
-      num = 10 * +weight + (6, 25 * +height) - 5 * +age - 160;
-      result.textContent = "".concat(num);
-
-      if (ratio) {
-        num = num - +ratio;
-        result.textContent = "".concat(num);
-      }
-    } else {
-      num = 10 * +weight + (6, 25 * +height) - 5 * +age + 5;
-      result.textContent = "".concat(num);
-
-      if (ratio) {
-        num = num - +ratio;
-        result.textContent = "".concat(num);
-      }
-    }
-  };
-
-  formula();
-
-  var getStatick = function getStatick(attribute) {
-    chooses.forEach(function (choose) {
-      choose.addEventListener("click", function (e) {
-        if (e.target && e.target.matches(attribute) && e.target.closest("#gender")) {
-          sex = e.target.getAttribute("id");
-          chooseItems.forEach(function (chooseItem) {
-            if (chooseItem.closest("#gender")) {
-              chooseItem.classList.remove("calculating__choose-item_active");
-              e.target.classList.add("calculating__choose-item_active");
-            }
-          });
-          formula();
-        }
-
-        if (e.target && e.target.matches(attribute) && e.target.closest(".calculating__choose_big")) {
-          console.log("asfda");
-          ratio = e.target.getAttribute("data-ratio");
-          chooseItems.forEach(function (chooseItem) {
-            if (chooseItem.closest(".calculating__choose_big")) {
-              chooseItem.classList.remove("calculating__choose-item_active");
-              e.target.classList.add("calculating__choose-item_active");
-            }
-          });
-          formula();
-        }
-      });
-    });
-  };
-
-  getStatick("#woman");
-  getStatick("#man");
-  getStatick("#low");
-  getStatick("#small");
-  getStatick("#medium");
-  getStatick("#high");
-
-  var getDinamick = function getDinamick() {
-    chooseMedium.addEventListener("input", function (e) {
-      switch (e.target.getAttribute("id")) {
-        case "height":
-          height = e.target.value;
-          break;
-
-        case "weight":
-          weight = e.target.value;
-          break;
-
-        case "age":
-          age = e.target.value;
-          break;
-      }
-
-      formula();
-    });
-  };
-
-  getDinamick();
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculator);
-
-/***/ }),
-
 /***/ "./src/js/modules/hamburger.js":
 /*!*************************************!*\
   !*** ./src/js/modules/hamburger.js ***!
@@ -292,22 +94,22 @@ function slider() {
       expertSubWapperSliders = document.querySelector(".expert__wapper-sliders"),
       expertSliders = document.querySelector(".expert__sliders"),
       expertSlide = document.querySelectorAll(".expert__slide"),
-      width = "947";
+      width = window.getComputedStyle(expertSubWapperSliders).width;
   var offset = 0;
   expertNextSlider.addEventListener("click", function () {
-    if (offset == +width.replace(/\D/g, "") * (expertSlide.length - 1)) {
+    if (offset == Math.round(+width.replace(/\D/g, "") * (expertSlide.length - 1))) {
       offset = 0;
     } else {
-      offset += +width.replace(/\D/g, "");
+      offset += Math.round(+width.replace(/\D/g, ""));
     }
 
     expertSliders.style.transform = "translateX(-".concat(offset, "px)");
   });
   expertPreviosSlider.addEventListener("click", function () {
     if (offset == 0) {
-      offset = +width.replace(/\D/g, "") * (expertSlide.length - 1);
+      offset = Math.round(+width.replace(/\D/g, "") * (expertSlide.length - 1));
     } else {
-      offset -= +width.replace(/\D/g, "");
+      offset -= Math.round(+width.replace(/\D/g, ""));
     }
 
     expertSliders.style.transform = "translateX(-".concat(offset, "px)");
@@ -3249,22 +3051,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_hamburger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/hamburger */ "./src/js/modules/hamburger.js");
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/scroll_dynamic */ "./src/js/modules/scroll_dynamic.js");
 /* harmony import */ var _modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_scroll_dynamic__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _modules_calculator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calculator */ "./src/js/modules/calculator.js");
-/* harmony import */ var _modules_acordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/acordion */ "./src/js/modules/acordion.js");
 
 
 
-
-
+ // import calculator from "./modules/calculator";
+// import acordion from "./modules/acordion";
 
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   (0,_modules_hamburger__WEBPACK_IMPORTED_MODULE_2__["default"])();
   (0,_modules_view_device__WEBPACK_IMPORTED_MODULE_0__.viewDevice)();
-  (0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.slider)();
-  (0,_modules_calculator__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  (0,_modules_acordion__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  (0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.slider)(); // calculator();
+  // acordion();
 });
 })();
 
