@@ -1,6 +1,6 @@
 .advantage
     display: block
-    padding: 80px 80px
+    padding: 80px 0 80px 0
     &__h2
         margin: 0 auto
         max-width: 376px
@@ -15,8 +15,9 @@
         margin: 0 auto
         padding-top: 44px
         display: grid
-        grid-template-columns: repeat(2, 570px)
+        grid-template-columns: repeat(auto-fit, minmax(auto, 570px))
         grid-template-rows: repeat(3, 355px)
+        justify-content: center
     &__background
         display: flex
         align-items: center
@@ -25,12 +26,13 @@
         background-color: rgba(0, 0, 0, 0.3)
     &__title-wapper
         display: flex
+        padding: 0 10px 0 10px
         align-items: center
         width: 100%
         background-color: rgba(0, 0, 0, 0.43)
         min-height: 156px
     &__title
-        max-width: 385px        
+        max-width: 385px
         text-align: center
         margin: 0 auto
         font-size: 23px
