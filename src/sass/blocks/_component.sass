@@ -1,0 +1,27 @@
+.component
+    background: white
+    border: 2px solid #7F7CFF
+    font-size: 1.5em
+
+    &__header
+        font-size: 2em
+        padding: 0.5em 0.75em /* заменили единицы измерения на em */
+        background: #7F7CFF
+        margin: 0
+
+    & p
+        padding-left: 1.5em /* заменили единицы измерения на em */
+        padding-right: 1.5em /* заменили единицы измерения на em */
+        margin: 1.5em 0 /* заменили единицы измерения на em */
+        font-size: em(16)
+
+// Маленький вариант
+
+    &--small .component__header
+        font-size: 1em
+        padding-left: 1.5em /* добавили изменяемый padding в em'ах */
+        padding-right: 1.5em; /* добавили изменяемый padding в em'ах */
+
+@media (max-width: 800px)
+    .component
+        font-size: 1em
